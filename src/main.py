@@ -1,18 +1,10 @@
-from appwrite.client import Client
+from utils.client import create_appwrite_client
 from appwrite.services.users import Users
 from appwrite.exception import AppwriteException
-import os
 
 # This Appwrite function will be executed every time your function is triggered
 def main(context):
-    # You can use the Appwrite SDK to interact with other services
-    # For this example, we're using the Users service
-    client = (
-        Client()
-        .set_endpoint(os.environ["APPWRITE_FUNCTION_API_ENDPOINT"])
-        .set_project(os.environ["APPWRITE_FUNCTION_PROJECT_ID"])
-        .set_key(context.req.headers["x-appwrite-key"])
-    )
+    client = create_appwrite_client(context)
     users = Users(client)
 
     try:
