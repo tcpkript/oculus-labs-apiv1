@@ -24,7 +24,7 @@ def main(context):
         context.error("Could not list users: " + repr(err))
 
     # The req object contains the request data
-    if context.req.path == "/ping":
+    if context.req.path == "/pin":
         # Use res object to respond with text(), json(), or binary()
         # Don't forget to return a response!
         return context.res.text("Pong")
